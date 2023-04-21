@@ -1,0 +1,350 @@
+{
+	"info": {
+		"_postman_id": "288933dd-70a0-443b-8f9a-39c28222e749",
+		"name": "Flight Management System",
+		"description": "This is a REST API for an airline ticket booking system. It includes several endpoints to get information about countries, flights, and registered users, as well as endpoints to book and cancel flights and to filter flights by parameters such as origin and destination country and date.\n\nThe API uses the Django REST Framework and follows the HTTP protocol. It includes several utility functions to handle user authentication and session management.\n\nSome of the endpoints are:\n\nCountries: retrieves a list of all countries where flights are available.\nFlights: retrieves a list of all available flights or creates a new flight (if the user is authenticated).\nMyFlights: retrieves a list of the flights booked by the authenticated user or deletes a specific flight (if the user is authenticated).\nFilterFlights: retrieves a list of flights that match certain parameters (origin country, destination country, and date).\nRegister: creates a new user account (either a customer or an airline).\nLogin: logs in a user and returns their authentication token.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Countries",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server_url}}countries",
+					"host": [
+						"{{server_url}}countries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Flights",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server_url}}flights",
+					"host": [
+						"{{server_url}}flights"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Flight",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{username}} {{user_role}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"origin_country\": 1,\r\n    \"destination_country\": 2,\r\n    \"departure_time\": \"2023-03-09 12:00:00\",\r\n    \"landing_time\": \"2023-03-09 15:00:00\",\r\n    \"remaining_tickets\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server_url}}flights",
+					"host": [
+						"{{server_url}}flights"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Flight",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{username}} {{user_role}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"origin_country\": 4,\r\n    \"destination_country\": 2,\r\n    \"departure_time\": \"2023-03-09 12:00:00\",\r\n    \"landing_time\": \"2023-03-09 15:00:00\",\r\n    \"remaining_tickets\": 100,\r\n    \"id\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server_url}}flights",
+					"host": [
+						"{{server_url}}flights"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get My Flights",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{username}} {{user_role}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{server_url}}myFlights",
+					"host": [
+						"{{server_url}}myFlights"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete My Flights",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{username}} {{user_role}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{server_url}}myFlights/11",
+					"host": [
+						"{{server_url}}myFlights"
+					],
+					"path": [
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter Flight",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"origin_country_id\": 1,\r\n    \"destination_country_id\": 2,\r\n    \"date\": \"2023-03-09\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server_url}}filter",
+					"host": [
+						"{{server_url}}filter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register (Customer)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"test_postman\",\r\n    \"password\": \"test_postman\",\r\n    \"email\": \"test_postman@gmail.com\",\r\n    \"user_role\": \"customer\",\r\n    \"first_name\": \"test_postman\",\r\n    \"last_name\": \"test_postman\",\r\n    \"address\": \"test_postman\",\r\n    \"phone_no\": \"8943579\",\r\n    \"credit_card_no\": \"1326546986\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server_url}}register",
+					"host": [
+						"{{server_url}}register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register (Airline)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"test_postman1\",\r\n    \"password\": \"test_postman1\",\r\n    \"email\": \"test_postman1@gmail.com\",\r\n    \"user_role\": \"airline\",\r\n    \"name\": \"Test Airline\",\r\n    \"country\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server_url}}register",
+					"host": [
+						"{{server_url}}register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"test_postman1\",\r\n    \"password\": \"test_postman1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server_url}}login",
+					"host": [
+						"{{server_url}}login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Flight By ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{username}} {{user_role}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{server_url}}flightById/3",
+					"host": [
+						"{{server_url}}flightById"
+					],
+					"path": [
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Booking",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{customer_username}} {{customer_user_role}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"flight\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server_url}}book",
+					"host": [
+						"{{server_url}}book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Tickets",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{customer_username}} {{customer_user_role}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{server_url}}ticketsById",
+					"host": [
+						"{{server_url}}ticketsById"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server_url",
+			"value": "http://cloudlearning.info:8000/api/",
+			"type": "default"
+		},
+		{
+			"key": "username",
+			"value": "testing",
+			"type": "default"
+		},
+		{
+			"key": "user_role",
+			"value": "airline",
+			"type": "default"
+		},
+		{
+			"key": "customer_username",
+			"value": "test_postman",
+			"type": "default"
+		},
+		{
+			"key": "customer_user_role",
+			"value": "customer",
+			"type": "default"
+		}
+	]
+}

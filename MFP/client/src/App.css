@@ -1,0 +1,13 @@
+.__hero_main {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #06beb55a 0%, #48b1bf4f 100%),
+  url(https://wallpapers.com/images/featured/ibk7fgrvtvhs7qzg.jpg)
+    no-repeat center center fixed;
+  background-size: cover;
+  box-shadow: inset 0 0 0 1000px rgb(0 0 0 / 80%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

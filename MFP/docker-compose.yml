@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  django:
+    container_name: django
+    build: .
+    #command: bash -c "python3 manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    volumes:
+      - data:/app
+    networks:
+      - internal
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=Molhamhaj90
+      - MYSQL_DATABASE=flights_test
+      - MYSQL_USER=app_user
+      - MYSQL_PASSWORD=pslaowdlakd
+    volumes:
+      - mysql:/var/lib/mysql
+    ports:
+      - "127.0.0.1:3307:3306"
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 10s
+      retries: 3
+  
+networks:
+  internal:
+    driver: bridge
+
+volumes:
+  mysql:
+  data:
