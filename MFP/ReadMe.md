@@ -2,20 +2,20 @@
 Fullstack website using Django and Frontend 
 (recommendation use the first option )
 
-1) if u are using the docker image:
+1)If u are using the docker image:
 
-	1)make sure you have Docker desktop and docker hub account
-	2)use the docker-compose-final.yml -----> command in pwershell "docker-compose -f docker-compose-final.yml up -d" .
-	3)spouse to be the right credentials ,but anway make sure the credentials in the settings.py for Database are correct as in docker-compose.
+	1)Make sure you have Docker desktop and docker hub account
+	2)Use the docker-compose-final.yml -----> command in pwershell "docker-compose -f docker-compose-final.yml up -d" .
+	3)Spouse to be the right credentials ,but anway make sure the credentials in the settings.py for Database are correct as in docker-compose.
 
   
-2)if u are bulding a container from scratch:
+2)If u are bulding a container from scratch:
 
 	1)Make sure you have Docker and Docker-Compose install on your machine.
 	2)Navigate to the project directory
 	3)Open command line [ if you are in windows ] or Terminal [ if you are in Mac or Linux ] inside the project directory
 	4)Run : `docker-compose -f docker-compose.yml up -d` (this is not the same file as previous method).
-	5That should automatically build all containers and run them in background
+	5)That should automatically build all containers and run them in background
 		## what docker-compose will do
 			- Build MYSQL container
 			- Build Django Backend
@@ -27,7 +27,7 @@ Fullstack website using Django and Frontend
 
   
 
-	6)access in browser:
+	6)Access in browser:
 	
 		http://localhost:8000/ Or use domain/IP of the Cloud Server if hosted on cloud
 		you can check the docker-compose.yml file to see the defined ports for the applications
@@ -66,7 +66,7 @@ Fullstack website using Django and Frontend
 		now 
 		this are the steps 
 
-		1. open project file with coding environment
+		1.open project file with coding environment
 		2.create a Data base called "flights_test"
 		3.install requirements.txt using pip install requirements.txt
 		3.don't forget to change the password of the new DB file in the sitting.py file !!!
