@@ -3,12 +3,14 @@ Fullstack website using Django and Frontend
 (recommendation use the first option )
 
 1) if u are using the docker image:
+
 	1)make sure you have Docker desktop and docker hub account
 	2)use the docker-compose-final.yml -----> command in pwershell "docker-compose -f docker-compose-final.yml up -d" .
 	3)spouse to be the right credentials ,but anway make sure the credentials in the settings.py for Database are correct as in docker-compose.
 
   
 2)if u are bulding a container from scratch:
+
 	1)Make sure you have Docker and Docker-Compose install on your machine.
 	2)Navigate to the project directory
 	3)Open command line [ if you are in windows ] or Terminal [ if you are in Mac or Linux ] inside the project directory
@@ -26,6 +28,7 @@ Fullstack website using Django and Frontend
   
 
 	6)access in browser:
+	
 		http://localhost:8000/ Or use domain/IP of the Cloud Server if hosted on cloud
 		you can check the docker-compose.yml file to see the defined ports for the applications
 		`ports:`
@@ -47,6 +50,7 @@ Fullstack website using Django and Frontend
 			Internal docker running port : 3306
 
 	7)Create SuperAdmin user:
+	
 		1)Enter the Docker Django container : `docker exec -it django bash` (in case ur are in powershell)
 		2)Run python command to create superuser: `python manage.py createsuperuser` (if u are using Docker terminal you just command this 			command)
 		3)And follow the instructions
