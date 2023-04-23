@@ -5,8 +5,18 @@ Fullstack website using Django and Frontend
 1)If u are using the docker image:
 
 	1)Make sure you have Docker desktop and docker hub account
-	2)Use the docker-compose-final.yml -----> command in pwershell "docker-compose -f docker-compose-final.yml up -d" .
-	3)Spouse to be the right credentials ,but anway make sure the credentials in the settings.py for Database are correct as in docker-compose.
+	2)use command "Docker login" in the powershell 
+	3)Use the docker-compose-final.yml -----> command in pwershell "docker-compose -f docker-compose-final.yml up -d" .(after reaching file dictionary, do the command)
+	4)Spouse to be the right credentials ,but anway make sure the credentials in the settings.py for Database are correct as in docker-compose.
+	5)after pulling/composing the contianer on your docker desktop wait a bit untill its completly up, and then use url 127.0.0.1:8000 ,
+	6)when its running create super user : in the contariner Terminal command: python manage.py createsuperuser , and follow instructions.
+	6)you need to add data to db :
+			*)login to 127.0.0.1:8000/admin
+			*)insert the credentinals of the superuser .
+			*)go to contries and add some countries 
+			*)go to User roles and add the user roles (Manager, customer, airline) (if you dont do that u get query do not exist error)
+			*)now you can swin the web application .  :)
+			
 
   
 2)If u are bulding a container from scratch:
