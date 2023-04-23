@@ -15,7 +15,7 @@ Fullstack website using Django and Frontend
 			*)insert the credentinals of the superuser .
 			*)go to contries and add some countries 
 			*)go to User roles and add the user roles (Manager, customer, airline) (if you dont do that u get query do not exist error)
-			*)now you can swin the web application .  :)
+	7)now you can swin the web application .  :)
 			
 
   
